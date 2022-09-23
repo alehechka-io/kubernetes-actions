@@ -21,3 +21,4 @@ jobs:
         uses: ./action/.github/actions/create-feature-namespace
 
       - name: 'Feature Namespace: ${{ steps.namespace.outputs.namespace }}'
+        run: echo "${{ steps.namespace.outputs.namespace }}"
