@@ -13,8 +13,8 @@ jobs:
 
       - name: Setup envsubst
         run: |
-          apt-get update
-          apt-get install gettext
+          sudo apt-get update
+          sudo apt-get install gettext
 
       - name: Checkout
         uses: actions/checkout@v3
