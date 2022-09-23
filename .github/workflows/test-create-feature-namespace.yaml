@@ -12,7 +12,9 @@ jobs:
         uses: azure/setup-kubectl@v3
 
       - name: Setup envsubst
-        run: sudo apt-get install gettext
+        run: |
+          apt-get update
+          apt-get install gettext
 
       - name: Checkout
         uses: actions/checkout@v3
