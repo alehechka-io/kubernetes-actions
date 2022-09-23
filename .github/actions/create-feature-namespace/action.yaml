@@ -13,7 +13,7 @@ runs:
       id: ref
       uses: ./action/.github/actions/get-ref
 
-    - name: Check for existing namespace
+    - name: Prepare Namespace Name
       id: namespace
       run: ./action/scripts/clean_variable.sh ${{ steps.ref.outputs.name }} name
       shell: bash
