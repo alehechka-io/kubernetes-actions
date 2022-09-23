@@ -8,14 +8,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Setup envsubst
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gettext
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@v3
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
