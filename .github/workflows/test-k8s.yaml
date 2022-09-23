@@ -25,5 +25,5 @@ jobs:
       - name: Get Ingresses
         run: kubectl get ingresses --all-namespaces
 
-      - name: Get off-limit ClusterRoleBindings
-        run: kubectl get clusterrolebindings
+      # - name: Get off-limit ClusterRoleBindings
+      #   run: kubectl get clusterrolebindings
