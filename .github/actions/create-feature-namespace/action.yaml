@@ -16,7 +16,7 @@ runs:
 
     - name: Get Existing Namespace
       id: namespace-json
-      run: ./action/scripts/get-namespace.sh ${{ steps.namespace.outputs.name }} value
+      run: ./action/scripts/get_namespace.sh ${{ steps.namespace.outputs.name }} value
       shell: bash
 
     - name: Create Feature Namespace
