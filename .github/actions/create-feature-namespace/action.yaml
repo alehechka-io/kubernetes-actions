@@ -28,4 +28,5 @@ runs:
       run: cat ./action/.github/actions/create-feature-namespace/k8s/feature.namespace.yaml | envsubst | kubectl apply -f -
       env:
         NAMESPACE: ${{ steps.namespace.outputs.name }}
+        REF_NAME: ${{ steps.ref.outputs.name }}
       shell: bash
