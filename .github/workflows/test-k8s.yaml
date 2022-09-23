@@ -1,8 +1,8 @@
 name: Test kubectl runner
-on: 
+on:
   push:
     branches:
-      - `feature/*`
+      - 'feature/*'
 
 jobs:
   test-kubectl:
