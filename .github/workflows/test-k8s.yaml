@@ -1,0 +1,29 @@
+name: Test kubectl runner
+on: 
+  push:
+    branches:
+      - `feature/*`
+
+jobs:
+  test-kubectl:
+    name: Test kubectl runner
+    runs-on: self-hosted
+
+    steps:
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Get Namespace
+        run: kubectl get namespaces
+
+      - name: Get Services
+        run: kubectl get services --all-namespaces
+
+      - name: Get Deployments
+        run: kubectl get deployments --all-namespaces
+
+      - name: Get Ingresses
+        run: kubectl get ingresses --all-namespaces
+
+      - name: Get off-limit ClusterRoleBindings
+        run: kubectl get clusterrolebindings
