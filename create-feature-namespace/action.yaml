@@ -11,7 +11,7 @@ runs:
   steps:
     - name: Get Ref
       id: ref
-      uses: alehechka/kubernetes-actions/get-ref@feature/refactor-code-organization
+      uses: alehechka/kubernetes-actions/get-ref@main
 
     - name: Prepare Namespace Name
       id: namespace
