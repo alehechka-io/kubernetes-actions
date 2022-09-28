@@ -1,7 +1,7 @@
 name: Test creating feature namespaces
 on:
   - workflow_dispatch
-  # - pull_request
+  - pull_request
 
 jobs:
   test-create-feature-namespaces:
