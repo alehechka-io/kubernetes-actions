@@ -14,7 +14,8 @@ async function run(): Promise<void> {
   const token = core.getInput('token')
   const octokit = new Octokit({auth: token})
   const repository = await getRepository(octokit)
-  core.info(JSON.stringify(repository))
+
+  core.info('Repo: ' + JSON.stringify(repository))
 
   if (await isStagingBranch(repository.default_branch)) {
     core.setOutput(environment, 'staging')
