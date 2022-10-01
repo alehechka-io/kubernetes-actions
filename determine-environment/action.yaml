@@ -1,0 +1,8 @@
+name: Determine Environment
+description: Based on trigger event and ref, will determine which environment to use for deployment.
+outputs:
+  environment:
+    description: Determined Environment
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
