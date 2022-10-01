@@ -11,9 +11,11 @@ on:
       - main
     paths:
       - 'determine-environment/**/*'
+      - '.github/workflows/check-dist.yaml'
   pull_request:
     paths:
       - 'determine-environment/**/*'
+      - '.github/workflows/check-dist.yaml'
   workflow_dispatch:
 
 jobs:
@@ -35,13 +37,11 @@ jobs:
           cache-dependency-path: ${{ matrix.path }}/yarn.lock
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --prefer-offline --frozen-lockfile
         working-directory: ${{ matrix.path }}
 
       - name: Rebuild the dist/ directory
-        run: |
-          npm run build
-          npm run package
+        run: yarn all
         working-directory: ${{ matrix.path }}
 
       - name: Compare the expected and actual dist/ directories
@@ -58,5 +58,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
-          name: dist
-          path: dist/
+          name: ${{ matrix.path }}/dist
+          path: ${{ matrix.path }}/dist/
