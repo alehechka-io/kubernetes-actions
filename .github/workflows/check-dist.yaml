@@ -10,10 +10,10 @@ on:
     branches:
       - main
     paths:
-      - determine-environment
+      - 'determine-environment/**/*'
   pull_request:
     paths:
-      - determine-environment
+      - 'determine-environment/**/*'
   workflow_dispatch:
 
 jobs:
