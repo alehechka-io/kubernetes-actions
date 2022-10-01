@@ -1,14 +1,24 @@
 import {getRefName, getRefType, getRepo, getRepoOwner, getSha} from './action'
 import {Octokit} from 'octokit'
+import * as core from '@actions/core'
 
 export async function isStagingBranch(defaultBranch: string): Promise<boolean> {
+  core.info('Determining if staging branch...')
+
   if (getRefType() !== 'branch') {
     return false
   }
 
+  core.info('Ref is of type: branch')
+
   if (getRefName() === defaultBranch) {
+    core.info('Ref is equal to default branch')
     return true
   }
+
+  core.info(
+    `Ref is not equal to default branch: ${getRefName()} != ${defaultBranch}`
+  )
 
   return false
 }
