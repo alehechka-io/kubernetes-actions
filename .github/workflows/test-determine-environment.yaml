@@ -1,7 +1,10 @@
 name: Test determine-environment
 on:
-  - workflow_dispatch
-  - pull_request
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'determine-environment/**/*'
+      - '.github/workflows/test-determine-environment.yaml'
 
 jobs:
   test-determine-environment:
