@@ -16,7 +16,7 @@ jobs:
         id: environment
         uses: ./determine-environment
         with:
-          token: ${ secret.GITHUB_TOKEN }
+          token: ${{ secret.GITHUB_TOKEN }}
 
       - name: 'Environment: ${{ steps.environment.outputs.environment }}'
         run: echo "${{ steps.environment.outputs.environment }}"
