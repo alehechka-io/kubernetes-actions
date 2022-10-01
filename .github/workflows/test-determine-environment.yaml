@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - fix/staging-condition
     tags:
       - '*'
   workflow_dispatch:
