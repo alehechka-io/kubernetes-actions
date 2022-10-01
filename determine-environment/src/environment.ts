@@ -1,5 +1,5 @@
-import github from '@actions/github'
-import {getRefName, getRefType} from './action'
+import {getRefName, getRefType, getRepo, getRepoOwner, getSha} from './action'
+import {Octokit} from 'octokit'
 
 export async function isStagingBranch(defaultBranch: string): Promise<boolean> {
   if (getRefType() !== 'branch') {
@@ -14,18 +14,21 @@ export async function isStagingBranch(defaultBranch: string): Promise<boolean> {
 }
 
 export async function isProductionTag(
-  octokit: ReturnType<typeof github.getOctokit>,
+  octokit: Octokit,
   defaultBranch: string
 ): Promise<boolean> {
   if (getRefType() !== 'tag') {
     return false
   }
 
-  const sha = github.context.sha
+  const owner = getRepoOwner()
+  const repo = getRepo()
+  const sha = getSha()
 
   // Get timestamp of commit that tag is pointing to
   const commits = await octokit.request('GET /repos/{owner}/{repo}/commits', {
-    ...github.context.repo,
+    owner,
+    repo,
     sha,
     per_page: 1
   })
@@ -37,7 +40,8 @@ export async function isProductionTag(
   const branchCommits = await octokit.request(
     'GET /repos/{owner}/{repo}/commits',
     {
-      ...github.context.repo,
+      owner,
+      repo,
       sha: defaultBranch,
       since: commitDate,
       until: commitDate
