@@ -75,8 +75,7 @@ runs:
 
     - name: Update versions
       run: |
-        yq --inplace '.version = "${{ steps.version.outputs.variable }}" | .appVersion = "${{ steps.version.outputs.variable }}"' Chart.yaml
-      working-directory: ${{ inputs.chart_path }}
+        yq --inplace '.version = "${{ steps.version.outputs.variable }}" | .appVersion = "${{ steps.version.outputs.variable }}"' ${{ inputs.chart_path }}/Chart.yaml
       shell: bash
 
     - name: Helm Deploy
