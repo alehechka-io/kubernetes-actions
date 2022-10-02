@@ -75,7 +75,7 @@ runs:
 
     - name: Update versions
       run: |
-        yq --inplace '.version = "${{ steps.version.outputs.variable }}", .appVersion = "${{ steps.version.outputs.variable }}"' Chart.yaml
+        yq --inplace '.version = "${{ steps.version.outputs.variable }}" | .appVersion = "${{ steps.version.outputs.variable }}"' Chart.yaml
       working-directory: ${{ inputs.chart_path }}
       shell: bash
 
