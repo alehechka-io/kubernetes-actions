@@ -21,6 +21,8 @@ jobs:
         with:
           config_map: 'hostnames'
           variable: 'development'
+        env:
+          NAMESPACE: get-configmap-value
 
       - name: 'Value: ${{ steps.config_map.outputs.value }}'
         run: echo "${{ steps.config_map.outputs.value }}"
