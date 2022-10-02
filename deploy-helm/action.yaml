@@ -55,7 +55,7 @@ runs:
 
     - name: Get Repository Name
       id: repository
-      uses: alehechka.io/kubernetes-actions/clean-variable@main
+      uses: alehechka-io/kubernetes-actions/clean-variable@main
       with:
         variable: ${{ github.repository }}
 
@@ -66,7 +66,7 @@ runs:
 
     - name: Version
       id: version
-      uses: alehechka.io/kubernetes-actions/determine-environment@main
+      uses: alehechka-io/kubernetes-actions/determine-environment@main
       with:
         token: ${{ inputs.token }}
         production_variable: ${{ github.ref_name }}
