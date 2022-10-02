@@ -18,6 +18,9 @@ jobs:
       - name: Get Namespace
         id: namespace
         uses: ./get-namespace
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          get_namespace: 'true'
 
       - name: 'Namespace: ${{ steps.namespace.outputs.namespace }}'
         run: echo "${{ steps.namespace.outputs.namespace }}"

@@ -27,7 +27,7 @@ runs:
         get_namespace: 'true'
 
     - name: Create Feature Namespace
-      if: steps.namespace.outputs.exists == 'true'
+      if: steps.namespace.outputs.exists != 'true'
       run: cat ${{ github.action_path }}/k8s/feature.namespace.yaml | envsubst | kubectl apply -f -
       env:
         NAMESPACE: ${{ steps.namespace.outputs.name }}
