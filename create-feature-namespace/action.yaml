@@ -20,13 +20,13 @@ runs:
   steps:
     - name: Get Ref
       id: ref
-      uses: alehechka-io/kubernetes-actions/get-ref@main
+      uses: alehechka-io/kubernetes-actions/get-ref@feature/helm-deploy
       with:
         custom_ref: ${{ inputs.namespace }}
 
     - name: Get Environment
       id: environment
-      uses: alehechka-io/kubernetes-actions/determine-environment@main
+      uses: alehechka-io/kubernetes-actions/determine-environment@feature/helm-deploy
       with:
         token: ${{ inputs.token }}
         production_variable: 'production'
@@ -35,7 +35,7 @@ runs:
 
     - name: Prepare Namespace Name
       id: namespace
-      uses: alehechka-io/kubernetes-actions/clean-variable@main
+      uses: alehechka-io/kubernetes-actions/clean-variable@feature/helm-deploy
       with:
         variable: ${{ steps.environment.outputs.variable }}
 
