@@ -24,3 +24,6 @@ jobs:
 
       - name: 'Namespace: ${{ steps.deploy.outputs.namespace }}'
         run: echo "${{ steps.deploy.outputs.namespace }}"
+
+      - name: 'Chart Version: ${{ steps.deploy.outputs.chart_version }}'
+        run: echo "${{ steps.deploy.outputs.chart_version }}"

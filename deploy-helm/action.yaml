@@ -39,6 +39,10 @@ outputs:
     description: 'Name of Namespace that was deployed to.'
     value: ${{ steps.namespace.outputs.namespace }}
 
+  chart_version:
+    description: 'Version of the Helm chart that was deployed'
+    value: ${{ steps.version.outputs.variable }}
+
 runs:
   using: composite
   steps:
