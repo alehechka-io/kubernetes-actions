@@ -47,7 +47,7 @@ runs:
 
     - name: Prepare Namespace Name
       id: namespace
-      uses: alehechka-io/kubernetes-actions/clean-variable@main
+      uses: alehechka-io/kubernetes-actions/clean-variable@feature/refactor-create-feature-namespace
       with:
         variable: ${{ steps.determined.outputs.namespace }}
 
