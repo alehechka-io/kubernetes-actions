@@ -4,9 +4,15 @@ import {getEventName, getRepository} from './action'
 import {Octokit} from 'octokit'
 
 const environment = 'environment'
+const variable = 'variable'
+
+const prodEnv = core.getInput('production_variable')
+const stagingEnv = core.getInput('staging_variable')
+const developEnv = core.getInput('development_variable')
 
 async function run(): Promise<void> {
   core.setOutput(environment, 'development')
+  core.setOutput(variable, developEnv)
   if (getEventName() !== 'push') {
     return
   }
@@ -17,11 +23,13 @@ async function run(): Promise<void> {
 
   if (await isStagingBranch(repository.data.default_branch)) {
     core.setOutput(environment, 'staging')
+    core.setOutput(variable, stagingEnv)
     return
   }
 
   if (await isProductionTag(octokit, repository.data.default_branch)) {
     core.setOutput(environment, 'production')
+    core.setOutput(variable, prodEnv)
   }
 }
 
