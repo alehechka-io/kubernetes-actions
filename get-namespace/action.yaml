@@ -46,6 +46,10 @@ runs:
         staging_variable: 'staging'
         development_variable: ${{ steps.ref.outputs.name }}
 
+    - name: 'Print Env Var: ${{ steps.environment.outputs.variable }}'
+      run: echo "${{ steps.environment.outputs.variable }}"
+      shell: bash
+
     - name: Prepare Namespace Name
       id: namespace
       uses: alehechka-io/kubernetes-actions/clean-variable@main
