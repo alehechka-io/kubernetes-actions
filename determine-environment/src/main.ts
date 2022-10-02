@@ -13,7 +13,8 @@ const developEnv = core.getInput('development_variable')
 async function run(): Promise<void> {
   core.setOutput(environment, 'development')
   core.setOutput(variable, developEnv)
-  if (getEventName() !== 'push') {
+  const eventName = getEventName()
+  if (eventName !== 'push' && eventName !== 'workflow_dispatch') {
     return
   }
 
