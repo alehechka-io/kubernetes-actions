@@ -46,6 +46,15 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Print Directory
+      run: ls -alR
+      shell: bash
+
+    - name: Print Chart Path
+      run: ls -alR
+      working-directory: ${{ inputs.chart_path }}
+      shell: bash
+
     - name: Create Namespace
       id: namespace
       uses: alehechka-io/kubernetes-actions/create-feature-namespace@feature/helm-deploy
