@@ -9,7 +9,7 @@ on:
 jobs:
   test-deploy-helm:
     name: Test Helm deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout
