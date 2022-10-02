@@ -13,7 +13,7 @@ inputs:
 outputs:
   namespace:
     description: Prepared namespace
-    value: ${{ steps.namespace.outputs.variable }}
+    value: ${{ steps.namespace.outputs.name }}
 
 runs:
   using: composite
