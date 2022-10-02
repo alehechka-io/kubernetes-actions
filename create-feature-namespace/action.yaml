@@ -53,7 +53,7 @@ runs:
 
     - name: Get Existing Namespace
       id: namespace-json
-      run: ${{ github.action_path }}/scripts/get_namespace.sh ${{ steps.namespace.outputs.variable }} value
+      run: ${{ github.action_path }}/scripts/get_namespace.sh "${{ steps.namespace.outputs.variable }}" value
       shell: bash
 
     - name: Create Feature Namespace
