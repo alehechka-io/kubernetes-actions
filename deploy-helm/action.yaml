@@ -91,8 +91,8 @@ runs:
 
     - name: Helm Deploy
       run: |
-        cat ${{ inputs.chart_path }}/values.yaml | envsubst \
-          | helm upgrade --install ${{ steps.repository.outputs.variable }} ${{ inputs.chart_path }} \
+        cat ${{ inputs.chart_path }}/values.yaml | envsubst |\
+        helm upgrade --install ${{ steps.repository.outputs.variable }} ${{ inputs.chart_path }} \
           --namespace ${{ steps.namespace.outputs.namespace }} --create-namespace \
           --set image.tag=${{ inputs.image_tag }} \
           --wait=${{ inputs.wait }} \
