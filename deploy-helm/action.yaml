@@ -81,7 +81,7 @@ runs:
 
     - name: Hostname
       id: hostname
-      uses: alehechka-io/kubernetes-actions/get-configmap-value@feature/deploy-helm-hostnames
+      uses: alehechka-io/kubernetes-actions/get-configmap-value@main
       with:
         namespace: default
         config_map: hostnames
