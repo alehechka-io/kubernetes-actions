@@ -30,7 +30,7 @@ runs:
           --namespace "${{ inputs.namespace }}" \
           -o json \
           "${{ inputs.config_map }}" \
-          | jq '.data.${{ inputs.variable }}' \
+          | jq -r '.data.${{ inputs.variable }}' \
           | envsubst)
 
         echo "::set-output name=value::$VALUE"
