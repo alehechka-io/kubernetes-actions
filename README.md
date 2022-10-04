@@ -6,16 +6,14 @@ Various GHA workflows packaged as workflow_call events.
 
 Currently using the [action-docs](https://github.com/npalm/action-docs) CLI tool to programmatically generate README docs from `action.yaml` files.
 
-#### Install with:
+Install `node_modules` with:
 
 ```bash
-sudo yarn global add action-docs --prefix /usr/local
+npm install
 ```
 
-#### Update docs with:
+Then run the `generate-docs` script with:
 
 ```bash
-cd <action repo>
-
-action-docs -u -a action.yaml --no-banner
+npm run docs
 ```
