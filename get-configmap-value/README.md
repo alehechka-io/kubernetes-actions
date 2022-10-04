@@ -9,22 +9,33 @@ Retrieves a variable from a ConfigMap in Kubernetes cluster
 ## Example Usage
 
 ```yaml
-name: Create Feature Namespace
+name: Get ConfigMap value
 on:
-  - pull_request
+  - push
 
 jobs:
-  create-feature-namespace:
-    name: Create Feature Namespace
-    runs-on: ubuntu-latest
+  get-configmap-value:
+    name: Get ConfigMap value
+    runs-on: self-hosted
 
     steps:
-      - name: Create Feature Namespace
-        id: namespace
-        uses: alehechka-io/kubernetes-actions/create-feature-namespace@main
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get ConfigMap
+        id: config_map
+        uses: ./get-configmap-value
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          config_map: 'my-configmap'
+          variable: 'my-variable'
+        env:
+          VARIABLE: example.com
+
+      - name: 'Value: ${{ steps.config_map.outputs.value }}'
+        run: echo "${{ steps.config_map.outputs.value }}"
 ```
+
+> Any variable supplied to `env` will be substituted into the returned value via `envsubst`
 
 <!-- action-docs-inputs -->
 ## Inputs
