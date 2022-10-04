@@ -9,21 +9,22 @@ Prepares Namespace name and can optionally retrieve the JSON output of the Names
 ## Example Usage
 
 ```yaml
-name: Create Feature Namespace
+name: Get Namespace
 on:
-  - pull_request
+  - push
 
 jobs:
-  create-feature-namespace:
-    name: Create Feature Namespace
-    runs-on: ubuntu-latest
+  get-namespace:
+    name: Get Namespace
+    runs-on: self-hosted
 
     steps:
-      - name: Create Feature Namespace
+      - name: Get Namespace
         id: namespace
-        uses: alehechka-io/kubernetes-actions/create-feature-namespace@main
+        uses: alehechka-io/kubernetes-actions/get-namespace@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ inputs.token }}
+          get_namespace: 'true'
 ```
 
 <!-- action-docs-inputs -->

@@ -16,7 +16,7 @@ on:
 jobs:
   create-feature-namespace:
     name: Create Feature Namespace
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Create Feature Namespace
