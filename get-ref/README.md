@@ -9,21 +9,19 @@ Will retrieve the acting ref name regardless of trigger
 ## Example Usage
 
 ```yaml
-name: Create Feature Namespace
+name: Get Ref
 on:
-  - pull_request
+  - push
 
 jobs:
-  create-feature-namespace:
-    name: Create Feature Namespace
+  get-ref:
+    name: Get Ref
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create Feature Namespace
-        id: namespace
-        uses: alehechka-io/kubernetes-actions/create-feature-namespace@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get Ref
+        id: ref
+        uses: alehechka-io/kubernetes-actions/get-ref@main
 ```
 
 <!-- action-docs-inputs -->
