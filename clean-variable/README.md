@@ -9,11 +9,21 @@ Sanitizes given variable for use as K8S resource and/or subdomain
 ## Example Usage
 
 ```yaml
-- name: Sanitize Variable
-  id: sanitized
-  uses: alehechka-io/kubernetes-actions/clean-variable@main
-  with:
-    variable: ${{ github.ref_name }}
+name: Sanitize Variable
+on:
+  - push
+
+jobs:
+  clean-variable:
+    name: Sanitize Variable
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sanitize Variable
+        id: sanitized
+        uses: alehechka-io/kubernetes-actions/clean-variable@main
+        with:
+          variable: ${{ github.ref_name }}
 ```
 
 <!-- action-docs-inputs -->
