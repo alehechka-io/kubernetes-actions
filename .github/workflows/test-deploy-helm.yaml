@@ -5,6 +5,9 @@ on:
     paths:
       - 'deploy-helm/**/*'
       - '.github/workflows/test-deploy-helm.yaml'
+  push:
+    tags:
+      - '*'
 
 jobs:
   test-deploy-helm:
