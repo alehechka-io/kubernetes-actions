@@ -83,7 +83,7 @@ runs:
 
     - name: Update values
       run: |
-        yq --inplace '.image.tag = "${{ inputs.image_tag }}"' values.yaml
+        yq --inplace '.image.tag = "${{ inputs.image_tag }}", .environment = "${{ steps.version.outputs.environment }}"' values.yaml
         envsubst < values.yaml | sponge values.yaml
       working-directory: ${{ inputs.chart_path }}
       shell: bash
