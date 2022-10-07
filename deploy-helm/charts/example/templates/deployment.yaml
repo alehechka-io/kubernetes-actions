@@ -37,6 +37,8 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          env: 
+            environment: {{ .Values.environment }}
           livenessProbe:
             httpGet:
               path: /
