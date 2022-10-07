@@ -47,6 +47,10 @@ outputs:
     description: 'Hostname provided to deployed Helm chart'
     value: ${{ steps.hostname.outputs.value }}
 
+  environment:
+    description: Environment used to deploy Helm chart
+    value: ${{ steps.version.outputs.environment }}
+
 runs:
   using: composite
   steps:
