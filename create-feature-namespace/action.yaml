@@ -32,7 +32,7 @@ runs:
       env:
         NAMESPACE: ${{ steps.namespace.outputs.name }}
         REF_NAME: ${{ steps.namespace.outputs.ref }}
-      working-directory: ${{ github.actions_path }}/k8s
+      working-directory: ${{ github.action_path }}/k8s
       shell: bash
 
     - name: Append service label
@@ -42,5 +42,5 @@ runs:
 
           kubectl patch namespace '${{ steps.namespace.outputs.name }}' --patch-file service-label.patch.yaml
         fi
-      working-directory: ${{ github.actions_path }}/k8s
+      working-directory: ${{ github.action_path }}/k8s
       shell: bash
