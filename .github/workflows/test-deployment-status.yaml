@@ -28,7 +28,7 @@ jobs:
         uses: ./deployment-status
         if: always()
         with:
-          token: ${{ secret.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
           step: finish
           env_url: https://example.com
