@@ -59,7 +59,7 @@ runs:
       uses: bobheadxi/deployments@v1
       with:
         token: ${{ inputs.token }}
-        step: ${{ inputs.token }}
+        step: ${{ inputs.step }}
         env: ${{ inputs.environment }}
         env_url: ${{ inputs.env_url }}
         ref: ${{ steps.ref.outputs.name }}
