@@ -23,6 +23,7 @@ jobs:
         uses: ./deployment-status
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          step: start
 
       - name: Finish Deployment
         uses: ./deployment-status
