@@ -51,7 +51,7 @@ runs:
       with:
         token: ${{ inputs.token }}
         step: ${{ inputs.step }}
-        env: ${{ steps.environment.outputs.variable }}
+        env: ${{ input.environment }}
         env_url: ${{ inputs.env_url }}
         ref: ${{ steps.ref.outputs.name }}
         deployment_id: ${{ inputs.deployment_id }}
