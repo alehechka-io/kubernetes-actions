@@ -40,21 +40,6 @@ runs:
       id: ref
       uses: alehechka-io/kubernetes-actions/get-ref@main
 
-    - name: Find previous deployment
-      id: deployment
-      run: |
-        if [[ -n "${{ inputs.deployment_id }}" ]]; then
-          echo "::set-output name=id::${{ inputs.deployment_id }}"
-
-        else
-          PREV_DEPLOY=$(gh api "/repos/${{ github.repository }}/deployments?ref=${{ steps.ref.outputs.name }}&per_page=1&environment=${{ inputs.environment }}" | jq '.[0].id // empty')
-          echo "::set-output name=id::$PREV_DEPLOY"
-
-        fi
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ inputs.token }}
-
     - name: Deployment Status
       uses: bobheadxi/deployments@v1
       with:
@@ -63,6 +48,6 @@ runs:
         env: ${{ inputs.environment }}
         env_url: ${{ inputs.env_url }}
         ref: ${{ steps.ref.outputs.name }}
-        deployment_id: ${{ steps.deployment.outputs.id }}
+        deployment_id: ${{ inputs.deployment_id }}
         status: ${{ inputs.status }}
-        auto_inactive: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
+        auto_inactive: true
