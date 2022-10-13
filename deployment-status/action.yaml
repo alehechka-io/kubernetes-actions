@@ -31,7 +31,7 @@ inputs:
 outputs:
   deployment_id:
     description: 'Deployment ID of deployment updated or created'
-    value: ${{ steps.deployment.outputs.id }}
+    value: ${{ steps.deployment.outputs.deployment_id }}
 
 runs:
   using: 'composite'
@@ -41,6 +41,7 @@ runs:
       uses: alehechka-io/kubernetes-actions/get-ref@main
 
     - name: Deployment Status
+      id: deployment
       uses: bobheadxi/deployments@v1
       with:
         token: ${{ inputs.token }}
